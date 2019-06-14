@@ -1,6 +1,7 @@
 package br.com.cmd.jpa;
 
 import java.sql.Connection;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -9,15 +10,15 @@ public class Conexao {
 	static Connection conn = null;
 	EntityManagerFactory emf = null;
 	
-	/*método construtor-------------------------------------------------*/
+	/*mï¿½todo construtor-------------------------------------------------*/
 	public Conexao() 
 	{
-		if(emf == null)//verifica se existe uma conexao aberta se tiver ele aproveita se não ele cria uma outra
+		if(emf == null)//verifica se existe uma conexao aberta se tiver ele aproveita se nï¿½o ele cria uma outra
 			emf = createEntity();
 		else
 			getEntity();
 	}
-	/*recupera a conexão aberta para persistir objeto-----------------*/
+	/*recupera a conexï¿½o aberta para persistir objeto-----------------*/
 	public EntityManagerFactory getEntity() 
 	{
 		return emf;
@@ -29,7 +30,7 @@ public class Conexao {
 		return conn;
 	}
 	
-	/*Cria uma conexão com o banco de dados---------------------------*/
+	/*Cria uma conexï¿½o com o banco de dados---------------------------*/
 	public EntityManagerFactory createEntity() 
 	{
 		emf = Persistence.createEntityManagerFactory("cmdJPA");
@@ -37,7 +38,7 @@ public class Conexao {
 		return emf;
 	}
 	
-	/*metodo responsável por fechar as conexões-----------------------*/
+	/*metodo responsï¿½vel por fechar as conexï¿½es-----------------------*/
 	public void closeEMF() 
 	{
 		emf.close();
