@@ -1,11 +1,10 @@
 package br.com.cmd.app;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import br.com.cmd.jpa.Conexao;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
-public class start {
+public class StartCMD extends Application {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -15,6 +14,12 @@ public class start {
 		
 		
 
+	}
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
