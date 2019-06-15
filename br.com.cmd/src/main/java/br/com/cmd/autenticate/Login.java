@@ -25,6 +25,8 @@ public class Login {
 		String sqlLogin = "FROM UserAccount as usuario WHERE usuario.email = :user AND usuario.senha = :senha";
 		try {
 			Query result = em.createQuery(sqlLogin);
+			result.setParameter("user", user);
+			result.setParameter("senha", pwd);
 			List<UserAccount> resultList = result.getResultList();
 			if (resultList.size() > 0) return true;
 		} catch (HibernateException e) {
