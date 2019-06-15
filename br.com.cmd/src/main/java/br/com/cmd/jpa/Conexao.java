@@ -1,38 +1,40 @@
 package br.com.cmd.jpa;
 
-import java.sql.Connection;
-
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import br.com.cmd.app.StartCMD;
+
 public class Conexao {
 	
-	static Connection conn = null;
+	static final Logger LOG = LogManager.getLogger(Conexao.class.getName());
 	EntityManagerFactory emf = null;
+	static EntityManager em = null;
 	
-	/*m�todo construtor-------------------------------------------------*/
+	/*método construtor-------------------------------------------------*/
 	public Conexao() 
 	{
-		if(emf == null)//verifica se existe uma conexao aberta se tiver ele aproveita se n�o ele cria uma outra
+		
+		if(emf == null)//verifica se existe uma conexao aberta se tiver ele aproveita se não ele cria uma outra
 			emf = createEntity();
 		else
 			getEntity();
 	}
 	/*recupera a conex�o aberta para persistir objeto-----------------*/
-	public EntityManagerFactory getEntity() 
+	public static EntityManager getEntity() 
 	{
-		return emf;
+		return em;
 	}
 	
-	/*Faz conexao JDBC-------------------------------------------------*/
-	public static Connection getConnection() 
-	{
-		return conn;
-	}
 	
 	/*Cria uma conex�o com o banco de dados---------------------------*/
 	public EntityManagerFactory createEntity() 
 	{
+		LOG.warn("Abrindo conexao!");
 		emf = Persistence.createEntityManagerFactory("cmdJPA");
 		
 		return emf;
